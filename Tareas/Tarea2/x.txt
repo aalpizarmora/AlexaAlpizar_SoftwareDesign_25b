@@ -1,0 +1,18 @@
+# 3 cambios significativos
+
+Single Responsability Principle
+
+La clase Libro hacía demasiado: almacenaba datos, calculaba popularidad, evaluaba antigüedad y presentaba datos.
+Ahora, Libro solo representa datos del libro. PopularidadService calcula la popularidad de un libro usando el patrón Strategy, AntiguedadService determina si un libro es antiguo y LibroPresenter muestra datos del libro usando los otros servicios.
+Esto facilita la lectura y comprensión del código, reduce el acoplamiento entre componentes y simplifica las prueas unitarias.
+
+Open/Closed Principle
+
+Antes, para agregar un nuevo género había que modificar calculator_popularidad() y añadir más if-elif, mientras que ahora se usa el patrón Strategy (PopularidadNovelaStrategy, PopularidadCienciaStrategy, etc.) para agregar otro género, se crea una nueva estrategia y se registra en PopularidadService.
+Reduce el riesgo de introducir errores al modificar código existente y facilita la adición de nuevas funcionalidades.
+
+Dependency Inversion Principle
+
+Antes, Biblioteca creaba y controlaba directamente toda la lógica.
+Ahora: Biblioteca recibe (ReportService, BibliotecaService) como dependencias.ReportService y BibliotecaService dependen de interfaces y servicios, no de implementaciones concretas.
+Facilita la sustitución de componentes y promueve el desacoplamiento.
